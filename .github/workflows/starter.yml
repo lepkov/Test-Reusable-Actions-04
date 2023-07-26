@@ -30,17 +30,17 @@ jobs:
       uses: actions/cache@v2        
       with:
         # A directory to store and save the cache
-        path: .
+        path: /tmp
         # An explicit key for restoring and saving the cache
-        key: ${{ runner.os }}-root
+        key: lepkov
       
   print_file_structure:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/cache@v2
         with:
-          path: .
-          key: ${{ runner.os }}-root
+          path: /tmp
+          key: lepkov
       - name: ls -lha
         run: ls -lha
         
