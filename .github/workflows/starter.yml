@@ -25,7 +25,7 @@ jobs:
       run: touch change_from_workflow
         
   check:   
-    uses: ./.github/workflows/check.yml
+    uses: lepkov/Test-Reusable-Actions-04/.github/workflows/check.yml@main
     needs: [build]
     secrets: inherit
     with:
