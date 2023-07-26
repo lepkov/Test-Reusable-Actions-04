@@ -23,6 +23,8 @@ jobs:
         fetch-depth: 0
     - name: Changing some files
       run: touch change_from_workflow
+    - name: ls -lha
+      run: ls -lha
     # Передаём в другую джобу репозиторий
     - name: Cache node modules
       uses: actions/cache@v2        
