@@ -1,4 +1,4 @@
-name: Run ls from starter workflow
+name: Runs from the starter workflow
 on:
   workflow_call:
     inputs:
