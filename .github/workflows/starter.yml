@@ -23,6 +23,12 @@ jobs:
         fetch-depth: 0
     - name: Changing some files
       run: touch change_from_workflow
+      
+  print_file_structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ls -lha
+        run: ls -lha
         
   check:   
     uses: lepkov/Test-Reusable-Actions-04/.github/workflows/check.yml@main
