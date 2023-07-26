@@ -26,21 +26,22 @@ jobs:
     - name: ls -lha
       run: ls -lha
     # Передаём в другую джобу репозиторий
-    - name: Cache node modules
+    - name: Cache 
       uses: actions/cache@v2        
       with:
         # A directory to store and save the cache
-        path: /tmp
+        path: .
         # An explicit key for restoring and saving the cache
-        key: lepkov
+        key: ${{ runner.os }}-repo-${{ github.sha }}
       
   print_file_structure:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/cache@v2
+      - name: Cache 
+        uses: actions/cache@v2
         with:
-          path: /tmp
-          key: lepkov
+          path: .
+          key: ${{ runner.os }}-repo-${{ github.sha }}
       - name: ls -lha
         run: ls -lha
         
