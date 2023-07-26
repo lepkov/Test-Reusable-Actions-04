@@ -9,5 +9,8 @@ on:
         type: string
         required: true
 jobs:
-  - name: ls -lha
-    run: ls -lha
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ls -lha
+        run: ls -lha
