@@ -23,10 +23,21 @@ jobs:
         fetch-depth: 0
     - name: Changing some files
       run: touch change_from_workflow
+    - name: Cache node modules
+      uses: actions/cache@v2        
+      with:
+        # A directory to store and save the cache
+        path: .
+        # An explicit key for restoring and saving the cache
+        key: ${{ runner.os }}-root
       
   print_file_structure:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/cache@v2
+        with:
+          path: prime-numbers
+          key: ${{ runner.os }}-root
       - name: ls -lha
         run: ls -lha
         
