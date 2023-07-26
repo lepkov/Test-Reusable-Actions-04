@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/cache@v2
         with:
-          path: prime-numbers
+          path: .
           key: ${{ runner.os }}-root
       - name: ls -lha
         run: ls -lha
