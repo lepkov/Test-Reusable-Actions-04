@@ -1,0 +1,34 @@
+name: Test repo and var pass to reusable workflow
+# Глобальные энв варс, доступные всем джобам
+env:
+  VAR: "MAIN"
+  # вcтавляем номер коммита в переменную 
+
+on: 
+  workflow_dispatch:
+    inputs:
+      branch:
+        required: true
+        default: main
+
+# Каждый джоб запускается в отдельном контейнере и ПАРАЛЛЕЛЬНО с другими
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout from specified branch
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ inputs.branch }}
+        fetch-depth: 0
+    - name: Changing some files
+      run: touch change_from_workflow
+        
+  check:   
+    uses: ./.github/workflows/check.yml
+    needs: [build]
+    secrets: inherit
+    with:
+      app_name: ${{ github.event.repository.name }}
+      branch: ${{ inputs.branch }}
+    
