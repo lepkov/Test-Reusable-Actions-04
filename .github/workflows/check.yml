@@ -9,8 +9,14 @@ on:
         type: string
         required: true
 jobs:
-  show_file_structure:
+  print_file_structure:
     runs-on: ubuntu-latest
     steps:
       - name: ls -lha
         run: ls -lha
+   
+  print_var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print var
+        run: echo ${{ inputs.branch }}
