@@ -9,7 +9,7 @@ on:
         type: string
         required: true
 jobs:
-  check:
+  show_file_structure:
     runs-on: ubuntu-latest
     steps:
       - name: ls -lha
