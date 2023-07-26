@@ -1,5 +1,4 @@
 name: Run ls from starter workflow
-
 on:
   workflow_call:
     inputs:
@@ -9,7 +8,6 @@ on:
       branch:
         type: string
         required: true
-        
 jobs:
   - name: ls -lha
     run: ls -lha
