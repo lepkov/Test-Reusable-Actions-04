@@ -1,4 +1,5 @@
 name: Check file structure and variable from Starter workflow
+# Being shown in actions right side
 run-name: Executor
 
 on:
