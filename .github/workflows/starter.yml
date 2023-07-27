@@ -23,7 +23,7 @@ jobs:
       run: touch file_created_during_workflow
       
     - name: Create a file to store artifact
-      run: change_from_workflow
+      run: touch change_from_workflow
       
     - name: Check file structure
       run: ls -lha
