@@ -12,7 +12,12 @@ jobs:
   print_file_structure:
     runs-on: ubuntu-latest
     steps:
-      - name: ls -lha
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+          
+      - name: Check file structure
         run: ls -lha
    
   print_var:
