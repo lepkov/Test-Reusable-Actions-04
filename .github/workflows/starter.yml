@@ -20,6 +20,7 @@ jobs:
       with:
         ref: ${{ inputs.branch }}
         fetch-depth: 0
+        
     - name: Create a file to check
       run: touch file_created_during_workflow
       
@@ -31,7 +32,7 @@ jobs:
       run: ls -lha
       
     - name: Create artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: my-artifact
         path: change_from_workflow
@@ -55,4 +56,12 @@ jobs:
     with:
       app_name: ${{ github.event.repository.name }}
       branch: ${{ inputs.branch }}
+      
+  delete_artifact:
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: geekyeggo/delete-artifact@v2
+        with:
+          name: my-artifact
     
