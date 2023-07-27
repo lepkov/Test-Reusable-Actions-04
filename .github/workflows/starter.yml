@@ -22,6 +22,7 @@ jobs:
     - name: Create a file to check
       run: touch file_created_during_workflow
       
+    # Без него не работает передача артефакта
     - name: Create a file to store artifact
       run: touch change_from_workflow
       
