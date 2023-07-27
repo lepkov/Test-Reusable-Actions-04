@@ -1,4 +1,5 @@
-name: Executor
+run-name: Executor
+name: Check file structure and variablo from Starter workflow
 
 on:
   workflow_call:
