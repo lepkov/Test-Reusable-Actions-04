@@ -20,7 +20,11 @@ jobs:
         ref: ${{ inputs.branch }}
         fetch-depth: 0
     - name: Changing some files
-      run: touch change_from_workflow
+      run: touch file_created_during_workflow
+      
+    - name: ls -lha
+      run: ls -lha
+      
     - name: Create artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -35,6 +39,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: my-artifact
+          
       - name: ls -lha
         run: ls -lha
         
