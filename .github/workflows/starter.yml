@@ -1,8 +1,7 @@
 name: Test repo and var pass to reusable workflow
-# Глобальные энв варс, доступные всем джобам
+
 env:
   VAR: "MAIN"
-  # вcтавляем номер коммита в переменную 
 
 on: 
   workflow_dispatch:
@@ -11,7 +10,6 @@ on:
         required: true
         default: main
 
-# Каждый джоб запускается в отдельном контейнере и ПАРАЛЛЕЛЬНО с другими
 jobs:
   checkout_and_make_changes:
     runs-on: ubuntu-latest
@@ -23,25 +21,20 @@ jobs:
         fetch-depth: 0
     - name: Changing some files
       run: touch change_from_workflow
-    - name: ls -lha
-      run: ls -lha
-    # Передаём в другую джобу репозиторий
-    - name: Cache 
-      uses: actions/cache@v2        
+    - name: Create artifacts
+      uses: actions/upload-artifact@v2
       with:
-        # A directory to store and save the cache
-        path: .
-        # An explicit key for restoring and saving the cache
-        key: ${{ runner.os }}-repo-${{ github.sha }}
+        name: my-artifact
+        path: change_from_workflow
       
   print_file_structure:
     runs-on: ubuntu-latest
+    needs: checkout_and_make_changes
     steps:
-      - name: Cache 
-        uses: actions/cache@v2
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
         with:
-          path: .
-          key: ${{ runner.os }}-repo-${{ github.sha }}
+          name: my-artifact
       - name: ls -lha
         run: ls -lha
         
