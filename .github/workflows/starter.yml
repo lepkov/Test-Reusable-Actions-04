@@ -1,5 +1,5 @@
-run-name: Starter
 name: Test repo and var pass to reusable workflow
+run-name: Starter
 env:
   VAR: "MAIN"
 
