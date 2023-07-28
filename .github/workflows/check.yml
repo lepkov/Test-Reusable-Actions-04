@@ -11,6 +11,9 @@ on:
       branch:
         type: string
         required: true
+      ARTIFACT-NAME:
+        type: string
+        required: true
 
 jobs:
   print_file_structure:
