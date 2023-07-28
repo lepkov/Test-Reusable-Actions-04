@@ -3,6 +3,7 @@ name: Test repo and var pass to reusable workflow
 run-name: Starter
 env:
   VAR: "MAIN"
+  ARTIFACT-NAME: my-artifact
 
 on: 
   workflow_dispatch:
@@ -34,7 +35,7 @@ jobs:
     - name: Create artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: my-artifact
+        name: ${{ env.ARTIFACT-NAME }}
         path: change_from_workflow
       
   print_file_structure:
@@ -44,7 +45,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
-          name: my-artifact
+          name: ${{ env.ARTIFACT-NAME }}
           
       - name: Check file structure in another job
         run: ls -lha
@@ -63,5 +64,5 @@ jobs:
     steps:
       - uses: geekyeggo/delete-artifact@v2
         with:
-          name: my-artifact
+          name: ${{ env.ARTIFACT-NAME }}
     
