@@ -38,7 +38,7 @@ jobs:
     - name: Create artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ env.ARTIFACT_NAME }}
+        name: ${{ inputs.ARTIFACT_NAME }}
         path: change_from_workflow
       
   print_file_structure:
@@ -48,7 +48,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.ARTIFACT_NAME }}
+          name: ${{ inputs.ARTIFACT_NAME }}
           
       - name: Check file structure in another job
         run: ls -lha
@@ -69,5 +69,5 @@ jobs:
     steps:
       - uses: geekyeggo/delete-artifact@v2
         with:
-          name: ${{ env.ARTIFACT_NAME }}
+          name: ${{ inputs.ARTIFACT_NAME }}
     
