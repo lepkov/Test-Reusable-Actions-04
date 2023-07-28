@@ -28,7 +28,7 @@ jobs:
     - name: Create a file to store artifact
       run: touch change_from_workflow
       
-    - name: Check file structure
+    - name: Check file structure inside the job
       run: ls -lha
       
     - name: Create artifacts
@@ -46,7 +46,7 @@ jobs:
         with:
           name: my-artifact
           
-      - name: Check file structure
+      - name: Check file structure in another job
         run: ls -lha
         
   check:   
