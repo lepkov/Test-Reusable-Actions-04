@@ -60,7 +60,7 @@ jobs:
       
   delete_artifact:
     runs-on: ubuntu-latest
-    needs: check
+    needs: [print_file_structure, check]
     steps:
       - uses: geekyeggo/delete-artifact@v2
         with:
