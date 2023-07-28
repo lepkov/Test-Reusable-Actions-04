@@ -16,6 +16,14 @@ on:
         default: "my-artifact"
 
 jobs:
+  var_shorthand:
+    runs-on: ubuntu-latest
+    steps:
+      - name: var_shorthand
+        run: echo $VAR
+        env:
+          VAR: ${{ env.VAR }}
+      
   checkout_and_make_changes:
     runs-on: ubuntu-latest
     steps:
