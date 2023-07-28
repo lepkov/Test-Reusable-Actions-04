@@ -22,7 +22,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.ARTIFACT-NAME }}
+          name: ${{ inputs.ARTIFACT-NAME }}
           
       - name: Check file structure in the reusable workflow
         run: ls -lha
