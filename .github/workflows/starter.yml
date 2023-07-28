@@ -57,6 +57,7 @@ jobs:
     with:
       app_name: ${{ github.event.repository.name }}
       branch: ${{ inputs.branch }}
+      ARTIFACT-NAME: ${{ env.ARTIFACT-NAME }}
       
   delete_artifact:
     runs-on: ubuntu-latest
