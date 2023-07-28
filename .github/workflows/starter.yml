@@ -4,14 +4,16 @@ run-name: Starter
 # Никаких -, только _
 env:
   VAR: "MAIN"
-  ARTIFACT_NAME: "my-artifact"
 
 on: 
   workflow_dispatch:
     inputs:
       branch:
         required: true
-        default: main
+        default: "main"
+      ARTIFACT_NAME:
+        required: true
+        default: "my-artifact"
 
 jobs:
   checkout_and_make_changes:
@@ -50,17 +52,16 @@ jobs:
           
       - name: Check file structure in another job
         run: ls -lha
-        
+  
+  # здесь нельзя блок env, ни в джобу, ни в with, поэтому через input
   check:   
     uses: lepkov/Test-Reusable-Actions-04/.github/workflows/check.yml@main
     needs: [checkout_and_make_changes]
     secrets: inherit
-    env: # Define the environment variable here
-      ARTIFACT_NAME: ${{ env.ARTIFACT_NAME }}
     with:
       app_name: ${{ github.event.repository.name }}
       branch: ${{ inputs.branch }}
-      ARTIFACT_NAME: ${{ env.ARTIFACT_NAME }}
+      ARTIFACT_NAME: ${{ inputs.ARTIFACT_NAME }}
       
   delete_artifact:
     runs-on: ubuntu-latest
