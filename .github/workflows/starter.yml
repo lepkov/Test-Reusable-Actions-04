@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: var_shorthand
-        run: echo $VAR
+        run: echo $VAR && echo ${{ env.VAR }}
         env:
           VAR: ${{ env.VAR }}
       
