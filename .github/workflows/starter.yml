@@ -55,6 +55,8 @@ jobs:
     uses: lepkov/Test-Reusable-Actions-04/.github/workflows/check.yml@main
     needs: [checkout_and_make_changes]
     secrets: inherit
+    env: # Define the environment variable here
+    ARTIFACT_NAME: ${{ env.ARTIFACT_NAME }}
     with:
       app_name: ${{ github.event.repository.name }}
       branch: ${{ inputs.branch }}
