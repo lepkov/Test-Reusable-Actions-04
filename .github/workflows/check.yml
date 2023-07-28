@@ -30,5 +30,11 @@ jobs:
   print_var:
     runs-on: ubuntu-latest
     steps:
-      - name: print var
+      - name: print branch var
         run: echo ${{ inputs.branch }}
+        
+      - name: print app_name var
+        run: echo ${{ inputs.app_name }}
+        
+      - name: print ARTIFACT-NAME var
+        run: echo ${{ inputs.ARTIFACT-NAME }}
