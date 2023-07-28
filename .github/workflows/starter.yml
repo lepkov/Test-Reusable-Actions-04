@@ -1,9 +1,10 @@
 name: Test repo and var pass to reusable workflow
 # Being shown in actions right side
 run-name: Starter
+# Никаких -, только _
 env:
   VAR: "MAIN"
-  ARTIFACT-NAME: "my-artifact"
+  ARTIFACT_NAME: "my-artifact"
 
 on: 
   workflow_dispatch:
@@ -35,7 +36,7 @@ jobs:
     - name: Create artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ env.ARTIFACT-NAME }}
+        name: ${{ env.ARTIFACT_NAME }}
         path: change_from_workflow
       
   print_file_structure:
@@ -45,7 +46,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.ARTIFACT-NAME }}
+          name: ${{ env.ARTIFACT_NAME }}
           
       - name: Check file structure in another job
         run: ls -lha
@@ -57,7 +58,7 @@ jobs:
     with:
       app_name: ${{ github.event.repository.name }}
       branch: ${{ inputs.branch }}
-      ARTIFACT-NAME: ${{ env.ARTIFACT-NAME }}
+      ARTIFACT_NAME: ${{ env.ARTIFACT_NAME }}
       
   delete_artifact:
     runs-on: ubuntu-latest
@@ -65,5 +66,5 @@ jobs:
     steps:
       - uses: geekyeggo/delete-artifact@v2
         with:
-          name: ${{ env.ARTIFACT-NAME }}
+          name: ${{ env.ARTIFACT_NAME }}
     
