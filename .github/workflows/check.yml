@@ -11,7 +11,7 @@ on:
       branch:
         type: string
         required: true
-      ARTIFACT-NAME:
+      ARTIFACT_NAME:
         type: string
         required: true
 
@@ -22,7 +22,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
-          name: ${{ inputs.ARTIFACT-NAME }}
+          name: ${{ inputs.ARTIFACT_NAME }}
           
       - name: Check file structure in the reusable workflow
         run: ls -lha
@@ -36,5 +36,5 @@ jobs:
       - name: print app_name var
         run: echo ${{ inputs.app_name }}
         
-      - name: print ARTIFACT-NAME var
-        run: echo ${{ inputs.ARTIFACT-NAME }}
+      - name: print ARTIFACT_NAME var
+        run: echo ${{ inputs.ARTIFACT_NAME }}
