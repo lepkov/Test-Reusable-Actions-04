@@ -16,6 +16,7 @@ on:
         default: "my-artifact"
 
 jobs:
+  #Works fine
   var_shorthand:
     runs-on: ubuntu-latest
     steps:
